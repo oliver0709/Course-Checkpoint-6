@@ -986,8 +986,12 @@ Fuera de su objetivo principal, hacer peticiones a servicios, nos ofrece un conj
 
 ### Colecciones
 
-Postman nos ofrece la posibilidad de guardar y agrupar conjuntos de solicitudes en lo que ellos denominan “Collections”, es decir simples carpetas en distintos niveles que organizarán nuestras peticiones HTTP. Por ejemplo así:
+Postman nos ofrece la posibilidad de guardar y agrupar conjuntos de solicitudes en lo que ellos denominan “Collections”, es decir simples carpetas en distintos niveles que organizarán nuestras peticiones HTTP. 
+
+Por ejemplo:
+
 ![Organización de las colecciones](organizacion-collections-1.png)
+
 
 >IMPORTANTE - En Postman, las colecciones no sólo agrupan peticiones, también pueden ser un flujo de trabajo o un conjunto de pruebas.
 
