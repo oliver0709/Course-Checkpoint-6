@@ -372,7 +372,7 @@ Por tanto, el gran beneficio que obtenemos de la idempotencia es la **capacidad 
 
 ### Casos Comunes Propensos a Errores y cómo Evitarlos
 
-- Uso erroneo de Verbos: Uno de los errores más comunes es utilizar el verbo incorrecto para una operación. Por ejemplo, usar POST en lugar de PUT para actualizar un recurso. Siempre hay que asegurarse de entender la función de cada verbo y utilícelos de manera apropiada.
+- Uso erroneo de Verbos: Uno de los errores más comunes es utilizar el verbo incorrecto para una operación. Por ejemplo, usar POST en lugar de PUT para actualizar un recurso. Siempre hay que asegurarse de entender la función de cada verbo y utilizarlos de manera apropiada.
   
 - No Utilizar los Códigos de Estado HTTP Estándar: Cada método HTTP debe devolver un código de estado apropiado. Por ejemplo, una solicitud GET exitosa debe devolver un código de estado 200 (OK), mientras que una solicitud POST exitosa debe devolver un código de estado 201 (Creado). Usar códigos de estado estándar ayuda a hacer la API más comprensible y amigable para el usuario.
   
@@ -526,12 +526,12 @@ db.usuarios.deleteOne({ nombre: "Pedro" })
 ```
 #### Otras acciones importantes:
 
-- **Pretty Printing** (pretty()): Para obtener una presentación más legible de los documentos, podemos encadenar el método pretty() a nuestras consultas. Por ejemplo, para mostrar los documentos de la colección "usuarios" de manera más legible:
+1. **Pretty Printing** (pretty()): Para obtener una presentación más legible de los documentos, podemos encadenar el método pretty() a nuestras consultas. Por ejemplo, para mostrar los documentos de la colección "usuarios" de manera más legible:
 
 ```javascript
 db.usuarios.find().pretty()
 ```
-- **Indexación**: La indexación es uno de los aspectos clave que ayuda a MongoDB a ofrecer un alto rendimiento al hacer las búsquedas más rápidas. 
+2. **Indexación**: La indexación es uno de los aspectos clave que ayuda a MongoDB a ofrecer un alto rendimiento al hacer las búsquedas más rápidas. 
 
 Los índices son estructuras de datos especiales que almacenan una pequeña porción del conjunto de datos de la colección de una forma fácil de recorrer. Los índices de MongoDB utilizan una estructura de datos en forma de [B-tree](https://en.wikipedia.org/wiki/B-tree).
 
@@ -553,7 +553,7 @@ db.students.getIndexes()
 ```
 
 Cada índice en MongoDB está representado como un documento en el array devuelto por el método `getIndexes()`. Cada documento contiene varios campos, como:
-   - "name": Este campo especifica el nombre del índice. Si no especificas un nombre, MongoDB genera un nombre concatenando los nombres de los campos indexados y su orden de clasificación.
+   - "name": Este campo especifica el nombre del índice. Si no se especifica un nombre, MongoDB genera un nombre concatenando los nombres de los campos indexados y su orden de clasificación.
    - "ns": Este campo especifica el espacio de nombres (databaseName.collectionName).
    - "key": Este campo especifica la clave de índice o las claves. Cada clave tiene su valor establecido en 1 o -1, indicando un orden ascendente o descendente para la clave, respectivamente.
 
@@ -572,9 +572,9 @@ db.students.createIndex({name:1})
    >Además, hay que tener en cuenta que los índices consumen espacio en disco y pueden impactar las operaciones de escritura. Por lo tanto, se debe crear índices con criterio y solo en aquellos campos que se consulta frecuentemente.
    
 
-- **Agregaciones**: MongoDB proporciona el marco de agregación para realizar operaciones de agregación en los datos de la colección. Podemos utilizar operadores de agregación como _$group_, _$match_, _$project_, etc., para realizar consultas avanzadas y calcular resultados agregados.
+3. **Agregaciones**: MongoDB proporciona el marco de agregación para realizar operaciones de agregación en los datos de la colección. Podemos utilizar operadores de agregación como _$group_, _$match_, _$project_, etc., para realizar consultas avanzadas y calcular resultados agregados.
 
-- **Replicación y fragmentación**: MongoDB soporta la replicación y fragmentación para proporcionar alta disponibilidad y escalabilidad horizontal. Podemos configurar conjuntos de réplicas para replicar datos y distribuir la carga de trabajo entre varios nodos.
+4. **Replicación y fragmentación**: MongoDB soporta la replicación y fragmentación para proporcionar alta disponibilidad y escalabilidad horizontal. Podemos configurar conjuntos de réplicas para replicar datos y distribuir la carga de trabajo entre varios nodos.
 
 #### Sharding
 
@@ -1087,7 +1087,7 @@ Un ejemplo común de polimorfismo en Python es la implementación de un método 
 
 El término "duck typing" proviene del dicho "Si camina como un pato y suena como un pato, entonces debe ser un pato". ¿Y qué relación tienen los patos con la programación? Pues bien, se trata de un símil en el que los **patos son objetos** y **hablar/andar métodos**. Es decir, que si un determinado objeto tiene los métodos que nos interesan, nos basta, siendo su tipo irrelevante. En el contexto de la programación, esto significa que la compatibilidad de un objeto se determina por la presencia de ciertos métodos y propiedades, más que por la pertenencia del objeto a una clase particular.
 
-En Python, el polimorfismo se logra a menudo a través de duck typing. Esto significa que cualquier objeto que tenga los métodos o atributos necesarios puede ser utilizado en una situación particular, independientemente de su clase.
+En ese sentido, en Python, el polimorfismo se logra a menudo a través de duck typing. Esto significa que cualquier objeto que tenga los métodos o atributos necesarios puede ser utilizado en una situación particular, independientemente de su clase.
 
 Dicho esto, consideremos ahora un ejemplo donde diferentes clases implementan un método común:
 ```python
@@ -1402,7 +1402,7 @@ print(num1 >= num2) # True
 ```
 6. `__getitem__`, `__setitem__`, `__delitem__`: Acceso a Elementos
 
-- Permiten personalizar el acceso a los elementos mediante índices, como en listas y diccionarios.
+Los métodos especiales `__getitem__`, `__setitem__` y `__delitem__` en Python permiten personalizar el acceso a los elementos de una clase mediante índices, similar a cómo funcionan las listas y diccionarios. Por ejemplo:
 ```python
 class MiLista:
     def __init__(self, datos):
@@ -1424,6 +1424,12 @@ print(lista[1])  # 20
 del lista[2]
 print(lista.datos)  # [1, 20]
 ```
+- `__getitem__(self, indice)`: Este método se llama cuando se accede a un elemento de la instancia de la clase utilizando la notación de corchetes ([]). Permite recuperar el valor asociado a un índice específico. En el ejemplo, la clase MiLista implementa `__getitem__` para acceder a los elementos de la lista datos. Así, lista[0] devuelve el primer elemento de la lista (1).
+  
+- `__setitem__(self, indice, valor)`: Se invoca cuando se asigna un valor a un elemento utilizando la notación de corchetes. Permite modificar o establecer un valor para un índice específico. En el ejemplo, lista[1] = 20 asigna el valor 20 al segundo elemento de la lista.
+
+- `__delitem__(self, indice)`: Se llama cuando se utiliza la instrucción _del_ para eliminar un elemento mediante la notación de corchetes. Permite eliminar un elemento específico. En el caso de _del lista[2]_, se elimina el tercer elemento de la lista.
+  
 ### Ventajas de los Métodos Dunder
 
 - Flexibilidad: Permiten personalizar y extender el comportamiento de las clases de manera potente y flexible.
