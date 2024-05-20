@@ -126,17 +126,9 @@ En este caso, el método saludar toma como primer parámetro self, que hace refe
 p = Persona("Juan")
 p.saludar()  # Imprime "Hola, mi nombre es Juan"
 ```
-### Private y protected
 
 A diferencia de otros lenguajes de POO, todos los métodos y atributos en Python son públicos. Es decir, no es posible definir una variable como private o protected.
 
-Existe una convención de añadir como prefijo un guión bajo (_) a los atributos que consideramos como protected y dos guiones bajos (__) a las variables que consideramos private.
-```Python
-class Persona:
-    def __init__(self, nombre, edad):
-        self._nombre = nombre  # atributo protected 
-        self.__edad = edad  # atributo private
-```
 ### Utilidad de las Clases en Python
 
 - Abstracción y organización del código: Las clases permiten agrupar datos y funcionalidades relacionadas en una sola entidad, lo que facilita la comprensión y el mantenimiento del código.
